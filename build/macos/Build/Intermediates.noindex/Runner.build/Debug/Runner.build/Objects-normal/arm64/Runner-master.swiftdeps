@@ -1,0 +1,8 @@
+version: "Apple Swift version 5.6.1 (swiftlang-5.6.0.323.66 clang-1316.0.20.12)"
+options: "9a1a92567da5ba281853eeb8aa848932366c22d4c906cd6a3183548b7eafb970"
+build_start_time: [1662496423, 264878988]
+build_end_time: [1662496426, 575647830]
+inputs:
+  "/Users/victoroliveira/Documents/GitHub/poc_clean_arch/macos/Flutter/GeneratedPluginRegistrant.swift": [1662496408, 245048046]
+  "/Users/victoroliveira/Documents/GitHub/poc_clean_arch/macos/Runner/AppDelegate.swift": [1662153552, 827432632]
+  "/Users/victoroliveira/Documents/GitHub/poc_clean_arch/macos/Runner/MainFlutterWindow.swift": [1662153552, 828300952]
