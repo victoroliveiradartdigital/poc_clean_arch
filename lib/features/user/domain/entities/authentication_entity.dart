@@ -1,0 +1,3 @@
+class AuthenticationEntity {
+  //TODO RESPONSABILIDADE COM REGRAS DE NEGOCIO DA APLICACAO
+}
