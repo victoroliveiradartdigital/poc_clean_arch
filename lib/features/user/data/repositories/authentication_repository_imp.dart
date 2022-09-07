@@ -1,5 +1,7 @@
+import 'package:poc_clean_arch/core/server_failure.dart';
 import 'package:poc_clean_arch/features/user/data/sources/authentication_datasource.dart';
 import 'package:poc_clean_arch/features/user/domain/entities/authentication_entity.dart';
+import 'package:poc_clean_arch/features/user/domain/entities/login_param.dart';
 import 'package:poc_clean_arch/features/user/domain/repositories/authentication_repository.dart';
 import 'package:dartz/dartz.dart';
 
@@ -8,14 +10,14 @@ class AuthenticationRepositoryImp implements AuthenticationRepository {
   AuthenticationRepositoryImp(this._authenticationDataSource);
 
   @override
-  Future<Either<Exception, AuthenticationEntity>> authentication() async {
-    return await _authenticationDataSource();
-    //TODO RESPONSABILIDADE FAZ A COMUNICACAO DA DATASOURCE COM CASOS DE USO
-  }
+  Future<Either<ServerFailure, AuthenticationEntity>> authentication(
+      LoginParam param) async {
+    try {
+      final response = await _authenticationDataSource.authentication(param);
 
-  @override
-  Future<Either<Exception, AuthenticationEntity>> recoveryPassword() async {
-    return await _authenticationDataSource();
-    //TODO RESPONSABILIDADE FAZ A COMUNICACAO DA DATASOURCE COM CASOS DE USO
+      return Right(response);
+    } catch (e) {
+      return left(ServerFailure());
+    }
   }
 }
