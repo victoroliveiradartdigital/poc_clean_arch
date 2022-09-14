@@ -1,0 +1,9 @@
+import 'package:poc_clean_arch/core/server_failure.dart';
+import 'package:poc_clean_arch/features/login/domain/entities/authentication_entity.dart';
+import 'package:dartz/dartz.dart';
+import 'package:poc_clean_arch/features/login/domain/entities/login_param.dart';
+
+abstract class AuthenticationUseCase {
+  Future<Either<ServerFailure, AuthenticationEntity>> call(
+      LoginParam loginParam);
+}
