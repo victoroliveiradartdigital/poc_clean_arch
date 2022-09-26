@@ -16,7 +16,7 @@ class AuthenticationRemoteDatasourceImp implements AuthenticationDataSource {
       var result = await _authenticationClient.authentication(param);
 
       return result;
-    } on DioError catch (e) {
+    } on DioError {
       throw ServerFailure();
     }
   }

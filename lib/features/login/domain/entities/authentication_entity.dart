@@ -5,9 +5,11 @@ part 'authentication_entity.g.dart';
 @JsonSerializable()
 class AuthenticationEntity {
   final String token;
+  final String refreshToken;
 
   const AuthenticationEntity({
     required this.token,
+    required this.refreshToken,
   });
 
   factory AuthenticationEntity.fromJson(Map<String, dynamic> json) =>

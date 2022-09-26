@@ -1,15 +1,16 @@
-import 'package:json_annotation/json_annotation.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:poc_clean_arch/features/login/domain/entities/authentication_entity.dart';
 
+part 'authentication.freezed.dart';
 part 'authentication.g.dart';
 
-@JsonSerializable()
-class Authentication extends AuthenticationEntity {
-  const Authentication({required String token}) : super(token: token);
+@Freezed()
+class Authentication extends AuthenticationEntity with _$Authentication {
+  const factory Authentication({
+    required String token,
+    required String refreshToken,
+  }) = _Authentication;
 
-  factory Authentication.fromJson(Map<String, dynamic> json) =>
+  factory Authentication.fromJson(Map<String, Object?> json) =>
       _$AuthenticationFromJson(json);
-
-  @override
-  Map<String, dynamic> toJson() => _$AuthenticationToJson(this);
 }
