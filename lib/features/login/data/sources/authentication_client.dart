@@ -11,6 +11,6 @@ abstract class AuthenticationClient {
   factory AuthenticationClient(Dio dio, {String baseUrl}) =
       _AuthenticationClient;
 
-  @POST('/auth/login')
+  @POST('/auth/token')
   Future<AuthenticationEntity> authentication(@Body() LoginParam loginParam);
 }

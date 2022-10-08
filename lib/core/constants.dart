@@ -1,1 +1,2 @@
-const String baseURL = 'http://ec2-54-226-60-142.compute-1.amazonaws.com:8080/';
+const String baseURL =
+    'http://ec2-54-226-60-142.compute-1.amazonaws.com:8080/api/v1/';

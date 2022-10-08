@@ -10,7 +10,7 @@ part of 'authentication_client.dart';
 
 class _AuthenticationClient implements AuthenticationClient {
   _AuthenticationClient(this._dio, {this.baseUrl}) {
-    baseUrl ??= 'http://ec2-54-226-60-142.compute-1.amazonaws.com:8080/';
+    baseUrl ??= 'http://ec2-54-226-60-142.compute-1.amazonaws.com:8080/api/v1/';
   }
 
   final Dio _dio;
@@ -27,7 +27,7 @@ class _AuthenticationClient implements AuthenticationClient {
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<AuthenticationEntity>(
             Options(method: 'POST', headers: _headers, extra: _extra)
-                .compose(_dio.options, '/auth/login',
+                .compose(_dio.options, '/auth/token',
                     queryParameters: queryParameters, data: _data)
                 .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = AuthenticationEntity.fromJson(_result.data!);
