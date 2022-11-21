@@ -8,12 +8,16 @@ part of 'authentication.dart';
 
 _$_Authentication _$$_AuthenticationFromJson(Map<String, dynamic> json) =>
     _$_Authentication(
-      token: json['token'] as String,
-      refreshToken: json['refreshToken'] as String,
+      access: json['access'] as String,
+      refresh: json['refresh'] as String,
+      expireIn: json['expireIn'] as String,
+      user: UserEntity.fromJson(json['user'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$_AuthenticationToJson(_$_Authentication instance) =>
     <String, dynamic>{
-      'token': instance.token,
-      'refreshToken': instance.refreshToken,
+      'access': instance.access,
+      'refresh': instance.refresh,
+      'expireIn': instance.expireIn,
+      'user': instance.user,
     };

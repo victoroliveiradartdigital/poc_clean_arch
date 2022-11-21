@@ -6,7 +6,7 @@ import 'package:poc_clean_arch/features/login/domain/repositories/authentication
 import 'package:poc_clean_arch/features/login/domain/usecases/authentication_usecase.dart';
 import 'package:dartz/dartz.dart';
 
-@Injectable()
+@Injectable(as: AuthenticationUseCase)
 class AuthenticationUseCaseImp implements AuthenticationUseCase {
   final AuthenticationRepository _authenticationRepository;
   AuthenticationUseCaseImp(this._authenticationRepository);

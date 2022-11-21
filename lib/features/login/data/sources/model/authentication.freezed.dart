@@ -20,8 +20,10 @@ Authentication _$AuthenticationFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Authentication {
-  String get token => throw _privateConstructorUsedError;
-  String get refreshToken => throw _privateConstructorUsedError;
+  String get access => throw _privateConstructorUsedError;
+  String get refresh => throw _privateConstructorUsedError;
+  String get expireIn => throw _privateConstructorUsedError;
+  UserEntity get user => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -34,7 +36,7 @@ abstract class $AuthenticationCopyWith<$Res> {
   factory $AuthenticationCopyWith(
           Authentication value, $Res Function(Authentication) then) =
       _$AuthenticationCopyWithImpl<$Res>;
-  $Res call({String token, String refreshToken});
+  $Res call({String access, String refresh, String expireIn, UserEntity user});
 }
 
 /// @nodoc
@@ -48,18 +50,28 @@ class _$AuthenticationCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? token = freezed,
-    Object? refreshToken = freezed,
+    Object? access = freezed,
+    Object? refresh = freezed,
+    Object? expireIn = freezed,
+    Object? user = freezed,
   }) {
     return _then(_value.copyWith(
-      token: token == freezed
-          ? _value.token
-          : token // ignore: cast_nullable_to_non_nullable
+      access: access == freezed
+          ? _value.access
+          : access // ignore: cast_nullable_to_non_nullable
               as String,
-      refreshToken: refreshToken == freezed
-          ? _value.refreshToken
-          : refreshToken // ignore: cast_nullable_to_non_nullable
+      refresh: refresh == freezed
+          ? _value.refresh
+          : refresh // ignore: cast_nullable_to_non_nullable
               as String,
+      expireIn: expireIn == freezed
+          ? _value.expireIn
+          : expireIn // ignore: cast_nullable_to_non_nullable
+              as String,
+      user: user == freezed
+          ? _value.user
+          : user // ignore: cast_nullable_to_non_nullable
+              as UserEntity,
     ));
   }
 }
@@ -71,7 +83,7 @@ abstract class _$$_AuthenticationCopyWith<$Res>
           _$_Authentication value, $Res Function(_$_Authentication) then) =
       __$$_AuthenticationCopyWithImpl<$Res>;
   @override
-  $Res call({String token, String refreshToken});
+  $Res call({String access, String refresh, String expireIn, UserEntity user});
 }
 
 /// @nodoc
@@ -87,18 +99,28 @@ class __$$_AuthenticationCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? token = freezed,
-    Object? refreshToken = freezed,
+    Object? access = freezed,
+    Object? refresh = freezed,
+    Object? expireIn = freezed,
+    Object? user = freezed,
   }) {
     return _then(_$_Authentication(
-      token: token == freezed
-          ? _value.token
-          : token // ignore: cast_nullable_to_non_nullable
+      access: access == freezed
+          ? _value.access
+          : access // ignore: cast_nullable_to_non_nullable
               as String,
-      refreshToken: refreshToken == freezed
-          ? _value.refreshToken
-          : refreshToken // ignore: cast_nullable_to_non_nullable
+      refresh: refresh == freezed
+          ? _value.refresh
+          : refresh // ignore: cast_nullable_to_non_nullable
               as String,
+      expireIn: expireIn == freezed
+          ? _value.expireIn
+          : expireIn // ignore: cast_nullable_to_non_nullable
+              as String,
+      user: user == freezed
+          ? _value.user
+          : user // ignore: cast_nullable_to_non_nullable
+              as UserEntity,
     ));
   }
 }
@@ -106,19 +128,27 @@ class __$$_AuthenticationCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_Authentication implements _Authentication {
-  const _$_Authentication({required this.token, required this.refreshToken});
+  const _$_Authentication(
+      {required this.access,
+      required this.refresh,
+      required this.expireIn,
+      required this.user});
 
   factory _$_Authentication.fromJson(Map<String, dynamic> json) =>
       _$$_AuthenticationFromJson(json);
 
   @override
-  final String token;
+  final String access;
   @override
-  final String refreshToken;
+  final String refresh;
+  @override
+  final String expireIn;
+  @override
+  final UserEntity user;
 
   @override
   String toString() {
-    return 'Authentication(token: $token, refreshToken: $refreshToken)';
+    return 'Authentication(access: $access, refresh: $refresh, expireIn: $expireIn, user: $user)';
   }
 
   @override
@@ -126,17 +156,20 @@ class _$_Authentication implements _Authentication {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Authentication &&
-            const DeepCollectionEquality().equals(other.token, token) &&
-            const DeepCollectionEquality()
-                .equals(other.refreshToken, refreshToken));
+            const DeepCollectionEquality().equals(other.access, access) &&
+            const DeepCollectionEquality().equals(other.refresh, refresh) &&
+            const DeepCollectionEquality().equals(other.expireIn, expireIn) &&
+            const DeepCollectionEquality().equals(other.user, user));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(token),
-      const DeepCollectionEquality().hash(refreshToken));
+      const DeepCollectionEquality().hash(access),
+      const DeepCollectionEquality().hash(refresh),
+      const DeepCollectionEquality().hash(expireIn),
+      const DeepCollectionEquality().hash(user));
 
   @JsonKey(ignore: true)
   @override
@@ -153,16 +186,22 @@ class _$_Authentication implements _Authentication {
 
 abstract class _Authentication implements Authentication {
   const factory _Authentication(
-      {required final String token,
-      required final String refreshToken}) = _$_Authentication;
+      {required final String access,
+      required final String refresh,
+      required final String expireIn,
+      required final UserEntity user}) = _$_Authentication;
 
   factory _Authentication.fromJson(Map<String, dynamic> json) =
       _$_Authentication.fromJson;
 
   @override
-  String get token;
+  String get access;
   @override
-  String get refreshToken;
+  String get refresh;
+  @override
+  String get expireIn;
+  @override
+  UserEntity get user;
   @override
   @JsonKey(ignore: true)
   _$$_AuthenticationCopyWith<_$_Authentication> get copyWith =>

@@ -5,25 +5,43 @@
 // **************************************************************************
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
+import 'package:dio/dio.dart' as _i6;
 import 'package:get_it/get_it.dart' as _i1;
 import 'package:injectable/injectable.dart' as _i2;
 
 import '../features/login/data/repositories/authentication_repository_imp.dart'
-    as _i3;
-import '../features/login/data/sources/authentication_datasource.dart' as _i4;
+    as _i10;
+import '../features/login/data/sources/authentication_client.dart' as _i4;
+import '../features/login/data/sources/authentication_client_imp.dart' as _i5;
+import '../features/login/data/sources/remote/authentication_datasource.dart'
+    as _i7;
+import '../features/login/data/sources/remote/authentication_remote_datasource_imp.dart'
+    as _i8;
 import '../features/login/domain/repositories/authentication_repository.dart'
-    as _i6;
+    as _i9;
+import '../features/login/domain/usecases/authentication_usecase.dart' as _i11;
 import '../features/login/domain/usecases/authentication_usecase_imp.dart'
-    as _i5; // ignore_for_file: unnecessary_lambdas
+    as _i12;
+import '../features/login/presentation/controllers/login_controller.dart'
+    as _i13;
+import 'app_config.dart' as _i3; // ignore_for_file: unnecessary_lambdas
 
 // ignore_for_file: lines_longer_than_80_chars
 /// initializes the registration of provided dependencies inside of [GetIt]
 _i1.GetIt $initGetIt(_i1.GetIt get,
     {String? environment, _i2.EnvironmentFilter? environmentFilter}) {
   final gh = _i2.GetItHelper(get, environment, environmentFilter);
-  gh.factory<_i3.AuthenticationRepositoryImp>(() =>
-      _i3.AuthenticationRepositoryImp(get<_i4.AuthenticationDataSource>()));
-  gh.factory<_i5.AuthenticationUseCaseImp>(
-      () => _i5.AuthenticationUseCaseImp(get<_i6.AuthenticationRepository>()));
+  gh.singleton<_i3.AppConfig>(_i3.AppConfig());
+  gh.factory<_i4.AuthenticationClient>(
+      () => _i5.AuthenticationClientImp(get<_i6.Dio>(), get<_i3.AppConfig>()));
+  gh.lazySingleton<_i7.AuthenticationDataSource>(() =>
+      _i8.AuthenticationRemoteDatasourceImp(
+          get<_i5.AuthenticationClientImp>()));
+  gh.singleton<_i9.AuthenticationRepository>(
+      _i10.AuthenticationRepositoryImp(get<_i7.AuthenticationDataSource>()));
+  gh.factory<_i11.AuthenticationUseCase>(
+      () => _i12.AuthenticationUseCaseImp(get<_i9.AuthenticationRepository>()));
+  gh.factory<_i13.LoginController>(() => _i13.LoginController(
+      authenticationUseCase: get<_i12.AuthenticationUseCaseImp>()));
   return get;
 }

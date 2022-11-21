@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:poc_clean_arch/core/injectable.dart';
+import 'package:poc_clean_arch/features/login/presentation/ui/login_page.dart';
 
-void main() {
-  configInjection();
+Future<void> main() async {
+  await configureInjection();
   runApp(const AppWidget());
 }
 
@@ -16,8 +17,8 @@ class AppWidget extends StatefulWidget {
 class _AppWidgetState extends State<AppWidget> {
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: Scaffold(),
+    return MaterialApp(
+      home: LoginPage(),
     );
   }
 }
