@@ -9,7 +9,6 @@ import 'package:retrofit/retrofit.dart';
 part 'authentication_client_imp.g.dart';
 
 @RestApi()
-@Injectable(as: AuthenticationClient)
 abstract class AuthenticationClientImp implements AuthenticationClient {
   @factoryMethod
   factory AuthenticationClientImp(Dio dio, AppConfig appConfig) =>
