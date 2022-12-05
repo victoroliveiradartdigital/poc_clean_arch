@@ -1,9 +1,11 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:poc_clean_arch/core/injectable.dart';
-import 'package:poc_clean_arch/features/login/presentation/ui/login_page.dart';
+import 'package:injectable/injectable.dart';
+import 'package:poc_clean_arch/src/injector.dart';
 
 Future<void> main() async {
-  await configureInjection();
+  WidgetsFlutterBinding.ensureInitialized();
+  configureDependencies(kDebugMode ? Environment.dev : Environment.prod);
   runApp(const AppWidget());
 }
 
@@ -18,7 +20,7 @@ class _AppWidgetState extends State<AppWidget> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: LoginPage(),
+      home: Container(),
     );
   }
 }
